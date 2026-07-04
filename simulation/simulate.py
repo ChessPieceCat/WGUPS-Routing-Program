@@ -155,7 +155,7 @@ def markTruckActive(truck):
     truck.isActive = True
 
 def markTruckReturn(truck):
-    truck.currentLocation = "HUB"
+    truck.currentLocation = "4001 South 700 East,  Salt Lake City, UT 84107"
     truck.isActive = False
 
 def markPackagesOnRoute(truck, table, currentTime, eventLog):

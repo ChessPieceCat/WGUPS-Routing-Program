@@ -84,7 +84,7 @@ def getDistance(locationOne, locationTwo, distanceTable):
         return distanceTable[locationTwo][locationOne]
 
 def nearestNeighbor(truck, distanceTable):
-    location = "HUB"
+    location = "4001 South 700 East,  Salt Lake City, UT 84107"
     route = []
     unvisited = list(truck.packages)
 
@@ -105,11 +105,11 @@ def nearestNeighbor(truck, distanceTable):
         else:
             break
 
-    route.append("HUB")
+    route.append("4001 South 700 East,  Salt Lake City, UT 84107")
     return route
 
 def calculateTotalDistance(route, distanceTable):
-    total = getDistance("HUB", route[0], distanceTable)
+    total = getDistance("4001 South 700 East,  Salt Lake City, UT 84107", route[0], distanceTable)
     for i in range(len(route) - 1):
         total += getDistance(route[i], route[i + 1], distanceTable)
     return total

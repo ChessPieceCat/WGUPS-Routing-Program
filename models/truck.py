@@ -12,6 +12,6 @@ class Truck:
 		self.capacity = 16
 		self.packages = []
 		self.route = []
-		self.currentLocation = "HUB"
+		self.currentLocation = "4001 South 700 East,  Salt Lake City, UT 84107"
 		self.mileage = 0
 		self.isActive = False

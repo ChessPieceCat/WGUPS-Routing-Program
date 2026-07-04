@@ -32,7 +32,13 @@ def loadDistanceTable(fileName):
 			distanceTable[locationName] = {}
 
 			for i in range(0, len(locations)):
+				if i + 1 >= len(row):
+					continue
+
+				cell = row[i + 1].strip()
+				if cell == "":
+					continue
 				otherLocation = locations[i]
-				distance = float(row[i + 1])
-				distanceTable[locationName][otherLocation] = distance
+				distanceValue = float(row[i + 1])
+				distanceTable[locationName][otherLocation] = distanceValue
 	return distanceTable

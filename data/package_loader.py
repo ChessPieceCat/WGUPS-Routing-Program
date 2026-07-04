@@ -63,12 +63,14 @@ def loadPackages(fileName, table):
 		next(reader)
 
 		for row in reader:
+			if len(row) < 6:
+				continue
 			packageID = int(row[0])
 			address = row[1]
 			deadline = row[2]
 			city = row[3]
 			zipCode = row[4]
-			weight = row[5]
+			weight = int(row[5])
 			specialNotes = row[6] if len(row) > 6 else None
 
 			availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold = parseNotes(packageID, specialNotes)
