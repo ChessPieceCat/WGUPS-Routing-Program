@@ -95,10 +95,10 @@ FUNCTION loadTruck(truck, queues, currentTime, table)
 	END FOR
 	RETURN queues
 END FUNCTION'''
-from ctypes.wintypes import SIZE
-from data.hash_table import HashTable
+from logistics.routing import buildRoute
 from models.status import Status
-
+from collections import namedtuple
+Queues = namedtuple('Queues', ['truckLocked', 'grouped', 'remaining'])
 
 def priorityQueues(table):
 	truckLocked = []
@@ -115,10 +115,10 @@ def priorityQueues(table):
 				remaining.append(package)
 
 	remaining.sort(key=lambda package: package["deadline"])
-	return truckLocked, grouped, remaining
+	return Queues(truckLocked, grouped, remaining)
 
 def isEligible(package, currentTime):
-	if package.status == Status.AT_HUB & package.availableTime <= currentTime & (package.addressHold == False or currentTime >= package.addressCorrectionTime):
+	if package.status == Status.AT_HUB and package.availableTime <= currentTime and (package.addressHold == False or currentTime >= package.addressCorrectionTime):
 		return True
 	else:
 		return False
@@ -128,15 +128,15 @@ def loadTruck(truck, queues, currentTime, table):
 	assignedGroups = set()
 
 	for package in queues.truckLocked:
-		if package.assignedTruckID == truck.truckID & currentLoad < truck.capacity & isEligible(package, currentTime):
+		if package.assignedTruckID == truck.truckID and currentLoad < truck.capacity and isEligible(package, currentTime):
 			truck.packages.append(package)
 			table.update(package.packageID, Status.LOADED, None)
 			currentLoad += 1
 
 	for package in queues.grouped:
-		if package.groupPackages is not in assignedGroups & isEligible(package, currentTime):
+		if package.groupPackages not in assignedGroups and isEligible(package, currentTime):
 			groupList = package.groupPackages
-			groupSize = SIZE(groupList)
+			groupSize = len(groupList)
 			if currentLoad + groupSize <= truck.capacity:
 				for p in groupList:
 					truck.packages.append(p)
@@ -144,7 +144,7 @@ def loadTruck(truck, queues, currentTime, table):
 					currentLoad += groupSize
 
 	for package in queues.remaining:
-		if currentLoad < truck.capacity & isEligible(package, currentTime):
+		if currentLoad < truck.capacity and isEligible(package, currentTime):
 			truck.packages.append(package)
 			table.update(package.packageID, Status.LOADED, None)
 			currentLoad += 1
@@ -156,6 +156,6 @@ def loadAllTrucks(trucks, drivers, table, distanceTable):
 	drivers[1].assignedTruck = trucks[1]
 
 	for truck in trucks:
-		loadTruck(truck, queues, currentTime, distanceTable)
+		loadTruck(truck, queues, currentTime, table)
 		buildRoute(truck, distanceTable)
 	return queues

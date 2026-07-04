@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="File skeleton created. Pseudocode imported.&#10; Unfinished code written for main.py. Truck, driver, and status classes created. Hash table started.&#10; Distance table created.&#10; Package loader started.">
+    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="Fixed indentation in hash_table.py. Fixed import of update function in truck_management.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hash_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/hash_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logistics/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/routing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logistics/truck_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/truck_management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulation/event_log.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation/event_log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulation/simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation/simulate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,61 +47,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.151774360549479" />
-      <entry key="MS500" value="1.6900562482656187" />
-      <entry key="S2" value="2.4714706247899993" />
-      <entry key="S5" value="3.7454418424230433" />
-      <entry key="S10" value="5.931373697976843" />
-      <entry key="S30" value="26.129453796721826" />
-      <entry key="S60" value="48.380274568916846" />
-      <entry key="M2" value="70.26167748563853" />
-      <entry key="M5" value="101.40573421195992" />
-      <entry key="M10" value="124.5361535821457" />
-      <entry key="M15" value="135.486989256415" />
-      <entry key="M30" value="148.77343378836537" />
-      <entry key="H1" value="156.47556433539873" />
-      <entry key="H2" value="160.6289568568213" />
-      <entry key="H4" value="162.78647770182016" />
-      <entry key="D1" value="164.627121265842" />
-      <entry key="W1" value="164.94663375239884" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.000000169603862" />
+      <entry key="S5" value="1.0037407307661923" />
+      <entry key="S10" value="1.1226166707609138" />
+      <entry key="S30" value="2.915166071877219" />
+      <entry key="S60" value="6.667348753250065" />
+      <entry key="M2" value="16.984291357526914" />
+      <entry key="M5" value="60.30241903009491" />
+      <entry key="M10" value="129.12769207168867" />
+      <entry key="M15" value="193.71742128291433" />
+      <entry key="M30" value="359.0592333275434" />
+      <entry key="H1" value="563.9032047838718" />
+      <entry key="H2" value="746.726620947132" />
+      <entry key="H4" value="874.2671213410016" />
+      <entry key="D1" value="1006.9542242730794" />
+      <entry key="W1" value="1032.628776148213" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="5.978988386287201E-57" />
-      <entry key="MS500" value="5.692794960752587E-12" />
-      <entry key="S2" value="0.0015446546121057087" />
-      <entry key="S5" value="0.07508148157616747" />
-      <entry key="S10" value="0.2742298243215069" />
-      <entry key="S30" value="0.7098742253117862" />
-      <entry key="S60" value="1.0516069817666343" />
-      <entry key="M2" value="1.3933966385502055" />
-      <entry key="M5" value="1.7129871424367054" />
-      <entry key="M10" value="1.8476898801942223" />
-      <entry key="M15" value="1.89638283878492" />
-      <entry key="M30" value="1.947120914812951" />
-      <entry key="H1" value="1.9732866617010765" />
-      <entry key="H2" value="1.9865740949003254" />
-      <entry key="H4" value="1.99326963907789" />
-      <entry key="D1" value="1.9988758468675134" />
-      <entry key="W1" value="1.9998393471645388" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.0819488683100531E-172" />
+      <entry key="S2" value="1.0198861267937594E-43" />
+      <entry key="S5" value="6.359466350397995E-18" />
+      <entry key="S10" value="2.5217982374484263E-9" />
+      <entry key="S30" value="0.0013611421659603887" />
+      <entry key="S60" value="0.036905175463697405" />
+      <entry key="M2" value="0.19552627568136813" />
+      <entry key="M5" value="0.6617593651029263" />
+      <entry key="M10" value="1.4846836564867725" />
+      <entry key="M15" value="2.3323581855086073" />
+      <entry key="M30" value="4.451990963399246" />
+      <entry key="H1" value="7.022318245118023" />
+      <entry key="H2" value="9.320969693726813" />
+      <entry key="H4" value="10.93311671713093" />
+      <entry key="D1" value="12.617620855236023" />
+      <entry key="W1" value="12.944349207412511" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.6285739422118787" />
-      <entry key="MS500" value="1.0603015888392036" />
-      <entry key="S2" value="2.0760467148633355" />
-      <entry key="S5" value="3.5550944686885266" />
-      <entry key="S10" value="6.027281469036025" />
-      <entry key="S30" value="26.754946497207552" />
-      <entry key="S60" value="49.37524858646225" />
-      <entry key="M2" value="71.61335246435752" />
-      <entry key="M5" value="103.09084739853631" />
-      <entry key="M10" value="126.36551827885256" />
-      <entry key="M15" value="137.36977913683538" />
-      <entry key="M30" value="150.71292949035725" />
-      <entry key="H1" value="158.44479974787214" />
-      <entry key="H2" value="162.61344121560333" />
-      <entry key="H4" value="164.77868585266404" />
-      <entry key="D1" value="166.62581783760893" />
-      <entry key="W1" value="166.94644743033842" />
+      <entry key="MS100" value="0.9138314502294005" />
+      <entry key="MS500" value="0.9821395952633915" />
+      <entry key="S2" value="0.9955048439393486" />
+      <entry key="S5" value="1.0019096670268048" />
+      <entry key="S10" value="1.1212040465253708" />
+      <entry key="S30" value="2.9104323099532254" />
+      <entry key="S60" value="6.687061688150048" />
+      <entry key="M2" value="17.142557816115087" />
+      <entry key="M5" value="60.89844425423356" />
+      <entry key="M10" value="130.53709868919694" />
+      <entry key="M15" value="195.97480529288302" />
+      <entry key="M30" value="363.44696187103614" />
+      <entry key="H1" value="570.879755058955" />
+      <entry key="H2" value="756.0193924008124" />
+      <entry key="H4" value="885.1844246353999" />
+      <entry key="D1" value="1019.5689271867268" />
+      <entry key="W1" value="1045.5727009107798" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -167,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783172835398</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed indentation in hash_table.py. Fixed import of update function in truck_management.py">
+      <option name="closed" value="true" />
+      <created>1783173986140</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1783173986140</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +185,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="File skeleton created. Pseudocode imported.&#10; Unfinished code written for main.py. Truck, driver, and status classes created. Hash table started.&#10; Distance table created.&#10; Package loader started." />
-    <option name="LAST_COMMIT_MESSAGE" value="File skeleton created. Pseudocode imported.&#10; Unfinished code written for main.py. Truck, driver, and status classes created. Hash table started.&#10; Distance table created.&#10; Package loader started." />
+    <MESSAGE value="Fixed indentation in hash_table.py. Fixed import of update function in truck_management.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed indentation in hash_table.py. Fixed import of update function in truck_management.py" />
   </component>
 </project>

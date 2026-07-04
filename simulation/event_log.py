@@ -72,8 +72,32 @@ eventLog[packageID]
 END
 FUNCTION
 
-FUNCTION
-markTruckActive(truck)
-truck.currentLocation = "ON ROUTE"
-END
-FUNCTION'''
+'''
+from models.status import Status
+
+
+def logEvent(eventLog, packageID, status, time, truckID):
+    if packageID not in eventLog:
+        eventLog[packageID] = []
+
+    eventLog[packageID].append({"status": status, "time": time, "truckID": truckID})
+
+def queryEventLog(queryTime, eventLog, table):
+    output = []
+
+    for bucket in table.table:
+        for package in bucket:
+            latest = None
+
+            if package["packageID"] in eventLog:
+                for event in eventLog[package.packageID]:
+                    if event["time"] <= queryTime:
+                        if latest is None or event["time"] > latest["time"]:
+                            latest = event
+            if latest is None:
+                status = Status.AT_HUB
+            else:
+                status = latest["status"]
+
+            output.append((package["packageID"], status))
+    return output
