@@ -96,8 +96,10 @@ def queryEventLog(queryTime, eventLog, table):
                             latest = event
             if latest is None:
                 status = package["status"]
+                statusTime = queryTime
             else:
                 status = latest["status"]
+                statusTime = latest["time"]
 
-            output.append((package["packageID"], status))
+            output.append((package["packageID"], status, statusTime))
     return output

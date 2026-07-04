@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="Debugged to fix infinite loops in simulate.py and added small sample data in packageFile.csv and distanceFile.csv to test">
+    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="Completed code with full csv data. Edited references to &quot;HUB&quot; to actual address &quot;4001 South 700 East,  Salt Lake City, UT 84107&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/distance_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/distance_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/package_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/package_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/distanceFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/distanceFile.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logistics/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/routing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/truck.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/truck.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/packageFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulation/simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation/simulate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logistics/truck_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/truck_management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulation/event_log.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation/event_log.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,61 +47,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.017701310707747" />
-      <entry key="MS500" value="1.4470450689488235" />
-      <entry key="S2" value="2.0105128232108305" />
-      <entry key="S5" value="2.9174866170801805" />
-      <entry key="S10" value="4.069941210919801" />
-      <entry key="S30" value="5.694716429034492" />
-      <entry key="S60" value="6.293516150306116" />
-      <entry key="M2" value="6.632089150385563" />
-      <entry key="M5" value="6.877633728214188" />
-      <entry key="M10" value="9.72829877086112" />
-      <entry key="M15" value="21.06870395650788" />
-      <entry key="M30" value="91.35993296204724" />
-      <entry key="H1" value="285.22618010616725" />
-      <entry key="H2" value="634.6644232884111" />
-      <entry key="H4" value="1027.8734952308173" />
-      <entry key="D1" value="1607.0918701969629" />
-      <entry key="W1" value="1742.1990448607144" />
+      <entry key="MS100" value="1.0000000000033944" />
+      <entry key="MS500" value="1.005083366622827" />
+      <entry key="S2" value="1.2675397127082344" />
+      <entry key="S5" value="1.6967370389902192" />
+      <entry key="S10" value="2.512145418610886" />
+      <entry key="S30" value="5.139809729902783" />
+      <entry key="S60" value="7.844800432365761" />
+      <entry key="M2" value="14.316450260907956" />
+      <entry key="M5" value="32.42930656197782" />
+      <entry key="M10" value="49.769455235839665" />
+      <entry key="M15" value="61.63674302703663" />
+      <entry key="M30" value="110.2988050813328" />
+      <entry key="H1" value="269.20166821574225" />
+      <entry key="H2" value="602.6058727847662" />
+      <entry key="H4" value="1014.0675000727364" />
+      <entry key="D1" value="1661.8632244521036" />
+      <entry key="W1" value="1818.2695441226642" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="2.4008313850733465E-209" />
-      <entry key="S10" value="7.754697535502723E-105" />
-      <entry key="S30" value="4.005399501806568E-35" />
-      <entry key="S60" value="1.0983614216330975E-17" />
-      <entry key="M2" value="6.100455963905349E-9" />
-      <entry key="M5" value="0.001362281391095597" />
-      <entry key="M10" value="0.10859028668541806" />
-      <entry key="M15" value="0.5384411115037686" />
-      <entry key="M30" value="3.3559021619169243" />
-      <entry key="H1" value="10.414277907955416" />
-      <entry key="H2" value="20.688951007558" />
-      <entry key="H4" value="30.56427929047601" />
-      <entry key="D1" value="43.61278647841715" />
-      <entry key="W1" value="46.496782872118246" />
+      <entry key="MS100" value="7.947438749525804E-21" />
+      <entry key="MS500" value="9.550925070025774E-5" />
+      <entry key="S2" value="0.09885789517476534" />
+      <entry key="S5" value="0.3962821803217385" />
+      <entry key="S10" value="0.6295094802027364" />
+      <entry key="S30" value="0.858658393514496" />
+      <entry key="S60" value="0.9660016602334559" />
+      <entry key="M2" value="1.1627591971142843" />
+      <entry key="M5" value="1.510634139340064" />
+      <entry key="M10" value="1.7289556468214384" />
+      <entry key="M15" value="1.9221004509121258" />
+      <entry key="M30" value="3.480411575764472" />
+      <entry key="H1" value="9.102675135718174" />
+      <entry key="H2" value="19.122858512100436" />
+      <entry key="H4" value="29.813995101364235" />
+      <entry key="D1" value="44.93397042042092" />
+      <entry key="W1" value="48.39272612771477" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.09316032965424081" />
-      <entry key="MS500" value="0.9848744346264242" />
-      <entry key="S2" value="1.7584444970612785" />
-      <entry key="S5" value="2.6683529475740544" />
-      <entry key="S10" value="3.8681637407754814" />
-      <entry key="S30" value="5.595955039688103" />
-      <entry key="S60" value="6.238713201371448" />
-      <entry key="M2" value="6.603186969181573" />
-      <entry key="M5" value="6.8670368017984185" />
-      <entry key="M10" value="9.830196818044833" />
-      <entry key="M15" value="21.60090651745236" />
-      <entry key="M30" value="94.70547097686755" />
-      <entry key="H1" value="295.621628314024" />
-      <entry key="H2" value="655.3306307088885" />
-      <entry key="H4" value="1058.419014867593" />
-      <entry key="D1" value="1650.6997731582608" />
-      <entry key="W1" value="1788.6950727591575" />
+      <entry key="MS100" value="0.017098339082204674" />
+      <entry key="MS500" value="0.4446244720402655" />
+      <entry key="S2" value="1.0783345477844706" />
+      <entry key="S5" value="1.8797070948717582" />
+      <entry key="S10" value="2.975048147118826" />
+      <entry key="S30" value="5.892905368987496" />
+      <entry key="S60" value="8.732260872497422" />
+      <entry key="M2" value="15.410208508039291" />
+      <entry key="M5" value="33.88380128883983" />
+      <entry key="M10" value="51.458745367403495" />
+      <entry key="M15" value="63.528122643533145" />
+      <entry key="M30" value="113.75766849153459" />
+      <entry key="H1" value="278.2825116034648" />
+      <entry key="H2" value="621.7052806952639" />
+      <entry key="H4" value="1043.8620774598962" />
+      <entry key="D1" value="1706.791991954571" />
+      <entry key="W1" value="1866.6614603733806" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -237,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783189628764</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Completed code with full csv data. Edited references to &quot;HUB&quot; to actual address &quot;4001 South 700 East,  Salt Lake City, UT 84107&quot;">
+      <option name="closed" value="true" />
+      <created>1783194242654</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1783194242654</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +254,7 @@
     <MESSAGE value="Converted pseudocode to python in all files but main.py. Most files still need debugging." />
     <MESSAGE value="Updated syntax in all files to match proper Python code. Added updateArrivals function in simulate.py and updated status.py to include an enum and log for delayed packages. Finished translating main.py" />
     <MESSAGE value="Debugged to fix infinite loops in simulate.py and added small sample data in packageFile.csv and distanceFile.csv to test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Debugged to fix infinite loops in simulate.py and added small sample data in packageFile.csv and distanceFile.csv to test" />
+    <MESSAGE value="Completed code with full csv data. Edited references to &quot;HUB&quot; to actual address &quot;4001 South 700 East,  Salt Lake City, UT 84107&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed code with full csv data. Edited references to &quot;HUB&quot; to actual address &quot;4001 South 700 East,  Salt Lake City, UT 84107&quot;" />
   </component>
 </project>

@@ -137,5 +137,9 @@ def twoOpt(route, distanceTable):
 
 def buildRoute(truck, distanceTable):
     route = nearestNeighbor(truck, distanceTable)
-    route = twoOpt(route, distanceTable)
+    while True:
+        newRoute = twoOpt(route, distanceTable)
+        if calculateTotalDistance(newRoute, distanceTable) >= calculateTotalDistance(route, distanceTable):
+            break
+        route = newRoute
     truck.route = route

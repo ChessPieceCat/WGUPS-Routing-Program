@@ -174,3 +174,6 @@ def loadAllTrucks(trucks, drivers, table, distanceTable, eventLog):
 		loadTruck(truck, queues, currentTime, table, eventLog)
 		buildRoute(truck, distanceTable)
 	return queues
+
+def getTotalMileage(trucks):
+	return sum(truck.mileage for truck in trucks)
