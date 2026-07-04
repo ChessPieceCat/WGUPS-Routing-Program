@@ -35,8 +35,8 @@ def main():
         result = queryEventLog(queryTime, eventLog, table)
 
         print(f"Mileage of All Trucks: {getMileageAtTime(queryTime, mileageLog):.1f} miles")
-        for packageID, status, statusTime in result:
-            print(f"Package ID: {packageID}: {status.value} (at {formatTime(statusTime)})")
+        for packageID, status, statusTime, truckID in result:
+            print(f"Package ID: {packageID}: {status.value} (at {formatTime(statusTime)}) on Truck {truckID}")
 #parse time function to convert the user time to a float. Floats are used in other parts of the program rather than time for simple calculation
 def parseTime(timeString):
     hour, minute = timeString.split(":")

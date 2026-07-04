@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="Added status time to query to ensure output of time with package status. Added mileage output to main along with a function to convert the float time to HH:MM. Updated buildRoute function to run two opt until no improvements are made to reduce total mileage.">
+    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="Added comments to each file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/distance_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/distance_table.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/hash_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/hash_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/package_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/package_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logistics/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/routing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logistics/truck_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/truck_management.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/status.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/status.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/truck.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/truck.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simulation/event_log.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation/event_log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulation/simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation/simulate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,61 +46,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0045469375272302" />
-      <entry key="MS500" value="1.5376727485861483" />
-      <entry key="S2" value="2.7875001718362977" />
-      <entry key="S5" value="4.63087926929461" />
-      <entry key="S10" value="7.460749354677081" />
-      <entry key="S30" value="18.217083057203592" />
-      <entry key="S60" value="32.72402636516714" />
-      <entry key="M2" value="56.22664302145828" />
-      <entry key="M5" value="103.19276143931059" />
-      <entry key="M10" value="167.7474057524065" />
-      <entry key="M15" value="242.59937574702556" />
-      <entry key="M30" value="489.2327032371501" />
-      <entry key="H1" value="885.9287270710587" />
-      <entry key="H2" value="1424.9204296778203" />
-      <entry key="H4" value="2042.429139947658" />
-      <entry key="D1" value="3073.4427341060523" />
-      <entry key="W1" value="3336.7286370420684" />
+      <entry key="MS100" value="1.0000000000322926" />
+      <entry key="MS500" value="1.0079770483210082" />
+      <entry key="S2" value="1.3245197417216539" />
+      <entry key="S5" value="2.2210737415067667" />
+      <entry key="S10" value="5.806020276217329" />
+      <entry key="S30" value="23.748609664354206" />
+      <entry key="S60" value="52.4116893845925" />
+      <entry key="M2" value="103.73502447988136" />
+      <entry key="M5" value="213.72884064977336" />
+      <entry key="M10" value="334.6527869892803" />
+      <entry key="M15" value="428.9390829617166" />
+      <entry key="M30" value="681.1592550903648" />
+      <entry key="H1" value="1111.0753751112397" />
+      <entry key="H2" value="1725.0808826147972" />
+      <entry key="H4" value="2438.6928752246076" />
+      <entry key="D1" value="3660.9900372283087" />
+      <entry key="W1" value="3979.5424940469393" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.2248826207469094E-183" />
-      <entry key="S10" value="3.507077182221042E-92" />
-      <entry key="S30" value="4.13463162445395E-31" />
-      <entry key="S60" value="1.0806638825088329E-15" />
-      <entry key="M2" value="6.297657672377844E-8" />
-      <entry key="M5" value="0.002998551860625511" />
-      <entry key="M10" value="0.11052399600734061" />
-      <entry key="M15" value="0.3777638025380083" />
-      <entry key="M30" value="1.5109984669380303" />
-      <entry key="H1" value="4.895914863867357" />
-      <entry key="H2" value="13.379652261900866" />
-      <entry key="H4" value="25.446950391074466" />
-      <entry key="D1" value="46.617077290947336" />
-      <entry key="W1" value="52.02975023947064" />
+      <entry key="S2" value="2.6130403992661334E-268" />
+      <entry key="S5" value="9.26527789464442E-108" />
+      <entry key="S10" value="3.04389189930329E-54" />
+      <entry key="S30" value="1.4492492188270676E-18" />
+      <entry key="S60" value="1.2038476726010811E-9" />
+      <entry key="M2" value="3.4696508106253206E-5" />
+      <entry key="M5" value="0.016457061454153387" />
+      <entry key="M10" value="0.134310297778795" />
+      <entry key="M15" value="0.3088379293377505" />
+      <entry key="M30" value="1.0783395946080079" />
+      <entry key="H1" value="3.7278252124054077" />
+      <entry key="H2" value="11.346945683628201" />
+      <entry key="H4" value="23.465351984002137" />
+      <entry key="D1" value="46.6723915594874" />
+      <entry key="W1" value="52.87806295835639" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9770188712856583" />
-      <entry key="MS500" value="1.5279573120607604" />
-      <entry key="S2" value="2.7823773156158214" />
-      <entry key="S5" value="4.627299072124631" />
-      <entry key="S10" value="7.457860287973002" />
-      <entry key="S30" value="18.2146853328012" />
-      <entry key="S60" value="32.72173903460466" />
-      <entry key="M2" value="56.22449189037737" />
-      <entry key="M5" value="103.19323574996477" />
-      <entry key="M10" value="167.85420504027078" />
-      <entry key="M15" value="242.97209319133182" />
-      <entry key="M30" value="490.7357175724769" />
-      <entry key="H1" value="890.8127799433512" />
-      <entry key="H2" value="1438.2836313927094" />
-      <entry key="H4" value="2067.859596679636" />
-      <entry key="D1" value="3120.054451319643" />
-      <entry key="W1" value="3388.757522657586" />
+      <entry key="MS100" value="0.0037471254854492355" />
+      <entry key="MS500" value="0.3343437606973641" />
+      <entry key="S2" value="1.0717070720602322" />
+      <entry key="S5" value="2.1031247829297297" />
+      <entry key="S10" value="5.740535396080168" />
+      <entry key="S30" value="23.722747134663148" />
+      <entry key="S60" value="52.39294587957858" />
+      <entry key="M2" value="103.71220534597771" />
+      <entry key="M5" value="213.72024319861015" />
+      <entry key="M10" value="334.7662693137243" />
+      <entry key="M15" value="429.2300415667469" />
+      <entry key="M30" value="682.2233546331416" />
+      <entry key="H1" value="1114.789343133438" />
+      <entry key="H2" value="1736.4113541238942" />
+      <entry key="H4" value="2462.141754360667" />
+      <entry key="D1" value="3707.6568542458094" />
+      <entry key="W1" value="4032.419648649622" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -257,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783195303334</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added comments to each file">
+      <option name="closed" value="true" />
+      <created>1783201518480</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1783201518480</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +271,7 @@
     <MESSAGE value="Debugged to fix infinite loops in simulate.py and added small sample data in packageFile.csv and distanceFile.csv to test" />
     <MESSAGE value="Completed code with full csv data. Edited references to &quot;HUB&quot; to actual address &quot;4001 South 700 East,  Salt Lake City, UT 84107&quot;" />
     <MESSAGE value="Added status time to query to ensure output of time with package status. Added mileage output to main along with a function to convert the float time to HH:MM. Updated buildRoute function to run two opt until no improvements are made to reduce total mileage." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added status time to query to ensure output of time with package status. Added mileage output to main along with a function to convert the float time to HH:MM. Updated buildRoute function to run two opt until no improvements are made to reduce total mileage." />
+    <MESSAGE value="Added comments to each file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added comments to each file" />
   </component>
 </project>

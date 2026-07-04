@@ -28,7 +28,8 @@ class HashTable:
 			"correctAddress": correctAddress,
 			"addressHold": addressHold,
 			"status": initialStatus,
-			"deliveryTime": None
+			"deliveryTime": None,
+			"initialStatus": initialStatus
 		}
 		self.table[index].append(record)
 	#search function that takes packageID as input
