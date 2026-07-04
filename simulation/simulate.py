@@ -141,31 +141,31 @@ def selectNextTrip(trucks, drivers, currentTime):
         if driver.availableTime <= currentTime:
             assignedTruck = driver.assignedTruck
 
-            if assignedTruck.currentLocation == "HUB" and len(assignedTruck.packages) > 0:
+            if (assignedTruck.packages
+                    and not assignedTruck.isActive):
                 return assignedTruck, driver
 
             spareTruck = trucks[2]
-            if spareTruck.currentLocation == "HUB" and spareTruck.packages.isEmpty == False:
+            if (spareTruck.packages
+                    and not spareTruck.isActive):
                 return spareTruck, driver
     return None
 
 def markTruckActive(truck):
-    truck.currentLocation = "ON ROUTE"
+    truck.isActive = True
 
 def markTruckReturn(truck):
     truck.currentLocation = "HUB"
+    truck.isActive = False
 
 def markPackagesOnRoute(truck, table, currentTime, eventLog):
     for package in truck.packages:
-        table.update(package.packageID, Status.ON_ROUTE, currentTime)
+        table.update(package["packageID"], Status.ON_ROUTE, currentTime)
         logEvent(eventLog,
-                package.packageID,
+                package["packageID"],
                 Status.ON_ROUTE,
                 currentTime,
                 truck.truckID)
-
-def markDriverActive(driver):
-    driver.availableTime = float('inf')
 
 def markDriverReturn(driver, time):
     driver.availableTime = time
@@ -179,15 +179,18 @@ def simulateDelivery(trucks, drivers, table, distanceTable):
     queues = loadAllTrucks(trucks, drivers, table, distanceTable, eventLog)
 
     while undeliveredPackages(table):
+        updateArrivals(table, currentTime, eventLog)
+        madeProgress = False
         trip = selectNextTrip(trucks, drivers, currentTime)
 
-        while trip is not None:
+        while trip:
+            madeProgress = True
             truck, driver = trip
             markTruckActive(truck)
-            markDriverActive(driver)
             markPackagesOnRoute(truck, table, currentTime, eventLog)
 
             tripEndTime, eventLog = runTrip(truck, driver, table, currentTime, eventLog, distanceTable)
+            currentTime = tripEndTime
             pendingReturns.append({"returnTime": tripEndTime, "Truck": truck, "Driver": driver})
 
             trip = selectNextTrip(trucks, drivers, currentTime)
@@ -205,8 +208,10 @@ def simulateDelivery(trucks, drivers, table, distanceTable):
             nextReturn["Truck"].route = []
             loadTruck(nextReturn["Truck"], queues, currentTime, table, eventLog)
             buildRoute(nextReturn["Truck"], distanceTable)
-        else:
-            currentTime += 0.1
+            madeProgress = True
+
+        if not madeProgress:
+            currentTime += 1
             updateArrivals(table, currentTime, eventLog)
 
     return eventLog

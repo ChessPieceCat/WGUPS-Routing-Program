@@ -62,7 +62,7 @@ def loadPackages(fileName, table):
 		reader = csv.reader(openFile)
 		next(reader)
 
-		for row in openFile:
+		for row in reader:
 			packageID = int(row[0])
 			address = row[1]
 			deadline = row[2]
@@ -99,8 +99,8 @@ def parseNotes(packageID, specialNotes):
 					hour = 0
 			availableTime = hour + (minute / 60.0)
 
-	if "Can only be on Truck" in specialNotes:
-		m2 = re.search(r"Can only be on Truck\s*(\d+)", specialNotes)
+	if "Can only be on truck" in specialNotes:
+		m2 = re.search(r"Can only be on truck\s*(\d+)", specialNotes)
 		if m2:
 			assignedTruckID = int(m2.group(1))
 

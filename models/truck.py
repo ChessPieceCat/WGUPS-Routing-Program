@@ -14,3 +14,4 @@ class Truck:
 		self.route = []
 		self.currentLocation = "HUB"
 		self.mileage = 0
+		self.isActive = False

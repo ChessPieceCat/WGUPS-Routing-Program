@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="Converted pseudocode to python in all files but main.py. Most files still need debugging.">
+    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="Updated syntax in all files to match proper Python code. Added updateArrivals function in simulate.py and updated status.py to include an enum and log for delayed packages. Finished translating main.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hash_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/hash_table.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/package_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/package_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logistics/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/routing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logistics/truck_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/truck_management.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/status.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distanceFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/distanceFile.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/truck.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/truck.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulation/event_log.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation/event_log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packageFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/packageFile.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simulation/simulate.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulation/simulate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,61 +48,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000062835008032" />
-      <entry key="MS500" value="1.0911255861760363" />
-      <entry key="S2" value="1.549427109034857" />
-      <entry key="S5" value="1.7871948086402396" />
-      <entry key="S10" value="1.911715803822272" />
-      <entry key="S30" value="2.934248783166434" />
-      <entry key="S60" value="5.924248480264066" />
-      <entry key="M2" value="14.510649908477154" />
-      <entry key="M5" value="42.55640414454661" />
-      <entry key="M10" value="82.086927410589" />
-      <entry key="M15" value="121.61494981046268" />
-      <entry key="M30" value="255.91570321547863" />
-      <entry key="H1" value="493.6747065106641" />
-      <entry key="H2" value="763.8233103536576" />
-      <entry key="H4" value="980.2222667552793" />
-      <entry key="D1" value="1227.1809224687552" />
-      <entry key="W1" value="1277.3783288815378" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0000000023714737" />
+      <entry key="S30" value="1.005749914638516" />
+      <entry key="S60" value="1.356856345962787" />
+      <entry key="M2" value="6.213608262485844" />
+      <entry key="M5" value="49.988208293213994" />
+      <entry key="M10" value="121.05080866294016" />
+      <entry key="M15" value="171.22415128237367" />
+      <entry key="M30" value="287.50381099529653" />
+      <entry key="H1" value="508.8555490344358" />
+      <entry key="H2" value="842.124318461783" />
+      <entry key="H4" value="1170.921464249518" />
+      <entry key="D1" value="1607.8291188152825" />
+      <entry key="W1" value="1704.1995320849037" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="9.037109382433094E-141" />
-      <entry key="S2" value="9.827137402680056E-36" />
-      <entry key="S5" value="1.1327389248933943E-14" />
-      <entry key="S10" value="1.3728558335268207E-7" />
-      <entry key="S30" value="0.008011692946905428" />
-      <entry key="S60" value="0.13604637799556235" />
-      <entry key="M2" value="0.7394933322863527" />
-      <entry key="M5" value="2.8463140756813985" />
-      <entry key="M10" value="5.237082197142538" />
-      <entry key="M15" value="6.948500394537741" />
-      <entry key="M30" value="10.593006438547267" />
-      <entry key="H1" value="15.038677238640876" />
-      <entry key="H2" value="19.3440280930289" />
-      <entry key="H4" value="22.58191233994957" />
-      <entry key="D1" value="26.160243983552007" />
-      <entry key="W1" value="26.877156882447068" />
+      <entry key="MS500" value="1.1897119431545697E-214" />
+      <entry key="S2" value="3.30267659726095E-54" />
+      <entry key="S5" value="4.0956556236311875E-22" />
+      <entry key="S10" value="2.224384768728461E-11" />
+      <entry key="S30" value="4.0042546213337935E-4" />
+      <entry key="S60" value="0.027933300762196956" />
+      <entry key="M2" value="0.25121928248973835" />
+      <entry key="M5" value="1.3022268218365474" />
+      <entry key="M10" value="3.1610704037768844" />
+      <entry key="M15" value="4.976979904311218" />
+      <entry key="M30" value="9.945047500206728" />
+      <entry key="H1" value="17.466964378659497" />
+      <entry key="H2" value="26.008185587169464" />
+      <entry key="H4" value="33.192769207134845" />
+      <entry key="D1" value="41.85910458325564" />
+      <entry key="W1" value="43.68432292994083" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9395228088186565" />
-      <entry key="MS500" value="1.0234976850390298" />
-      <entry key="S2" value="1.432160979069999" />
-      <entry key="S5" value="1.715930507878258" />
-      <entry key="S10" value="1.8699690773932591" />
-      <entry key="S30" value="2.9181179489088316" />
-      <entry key="S60" value="6.028577287083866" />
-      <entry key="M2" value="15.19771839815573" />
-      <entry key="M5" value="45.32907317361257" />
-      <entry key="M10" value="87.25078276704025" />
-      <entry key="M15" value="128.49350524555481" />
-      <entry key="M30" value="266.44495663695574" />
-      <entry key="H1" value="508.66105384183265" />
-      <entry key="H2" value="783.1311535660313" />
-      <entry key="H4" value="1002.7824108240227" />
-      <entry key="D1" value="1253.3368797890835" />
-      <entry key="W1" value="1304.2548548575492" />
+      <entry key="MS100" value="2.964342979480093E-4" />
+      <entry key="MS500" value="0.19696347151233654" />
+      <entry key="S2" value="0.6661874125460109" />
+      <entry key="S5" value="0.8500384466878177" />
+      <entry key="S10" value="0.9219752983407882" />
+      <entry key="S30" value="0.9793334434524931" />
+      <entry key="S60" value="1.369032069191577" />
+      <entry key="M2" value="6.449442962582335" />
+      <entry key="M5" value="51.2717645621368" />
+      <entry key="M10" value="124.19144142283254" />
+      <entry key="M15" value="176.17934172391244" />
+      <entry key="M30" value="297.4219016102323" />
+      <entry key="H1" value="526.2900581013496" />
+      <entry key="H2" value="868.1025964064306" />
+      <entry key="H4" value="1204.0929533609533" />
+      <entry key="D1" value="1649.6833493761928" />
+      <entry key="W1" value="1747.8831181403518" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -126,8 +121,10 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main.executor": "Debug",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -151,6 +148,37 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\tiern\OneDrive\Documents\C950 Project\WGUPS Routing Program" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="WGUPS Routing Program" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -191,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783181503646</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated syntax in all files to match proper Python code. Added updateArrivals function in simulate.py and updated status.py to include an enum and log for delayed packages. Finished translating main.py">
+      <option name="closed" value="true" />
+      <created>1783184807202</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1783184807202</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +237,7 @@
     <MESSAGE value="File skeleton created. Pseudocode imported.&#10; Unfinished code written for main.py. Truck, driver, and status classes created. Hash table started.&#10; Distance table created.&#10; Package loader started." />
     <MESSAGE value="Fixed indentation in hash_table.py. Fixed import of update function in truck_management.py" />
     <MESSAGE value="Converted pseudocode to python in all files but main.py. Most files still need debugging." />
-    <option name="LAST_COMMIT_MESSAGE" value="Converted pseudocode to python in all files but main.py. Most files still need debugging." />
+    <MESSAGE value="Updated syntax in all files to match proper Python code. Added updateArrivals function in simulate.py and updated status.py to include an enum and log for delayed packages. Finished translating main.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated syntax in all files to match proper Python code. Added updateArrivals function in simulate.py and updated status.py to include an enum and log for delayed packages. Finished translating main.py" />
   </component>
 </project>

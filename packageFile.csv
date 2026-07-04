@@ -1,0 +1,6 @@
+packageID,address,deadline,city,zip,weight,specialNotes
+1,A,EOD,SLC,84101,5,
+2,B,10:30 AM,SLC,84102,3,Delayed 9:05 am
+3,C,EOD,SLC,84103,2,Can only be on truck 1
+4,A,EOD,SLC,84101,4,Must be delivered with 5
+5,B,EOD,SLC,84102,1,Must be delivered with 4
