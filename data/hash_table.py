@@ -55,41 +55,41 @@ class HashTable:
 		self.tableSize = tableSize
 		self.table = [[] for i in range(tableSize)]
 
-    def hash(self, key):
-        return key % self.tableSize
+	def hash(self, key):
+		return key % self.tableSize
 
-    def insert(self, packageID, address, deadline, city, zipCode, weight, availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold):
-        index = self.hash(packageID)
+	def insert(self, packageID, address, deadline, city, zipCode, weight, availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold):
+		index = self.hash(packageID)
 
-        record = {
-            "packageID": packageID,
-            "address": address,
-            "deadline": deadline,
-            "city": city,
-            "zip": zipCode,
-            "weight": weight,
-            "availableTime": availableTime,
-            "assignedTruckID": assignedTruckID,
-            "groupPackages": groupPackages,
-            "addressCorrectionTime": addressCorrectionTime,
-            "correctAddress": correctAddress,
-            "addressHold": addressHold,
-            "status": Status.AT_HUB,
-            "deliveryTime": None
-        }
-        self.table[index].append(record)
+		record = {
+			"packageID": packageID,
+			"address": address,
+			"deadline": deadline,
+			"city": city,
+			"zip": zipCode,
+			"weight": weight,
+			"availableTime": availableTime,
+			"assignedTruckID": assignedTruckID,
+			"groupPackages": groupPackages,
+			"addressCorrectionTime": addressCorrectionTime,
+			"correctAddress": correctAddress,
+			"addressHold": addressHold,
+			"status": Status.AT_HUB,
+			"deliveryTime": None
+		}
+		self.table[index].append(record)
 
-    def search(self, packageID):
-        index = self.hash(packageID)
+	def search(self, packageID):
+		index = self.hash(packageID)
 
-        for record in self.table[index]:
-            if record["packageID"] == packageID:
-                return record
-        return None
+		for record in self.table[index]:
+			if record["packageID"] == packageID:
+				return record
+		return None
 
-    def update(self, packageID, status, deliveryTime):
-        record = self.search(packageID)
+	def update(self, packageID, status, deliveryTime):
+		record = self.search(packageID)
 
-        if record is not None:
-            record["status"] = status
-            record["deliveryTime"] = deliveryTime
+		if record is not None:
+			record["status"] = status
+			record["deliveryTime"] = deliveryTime

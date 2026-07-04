@@ -2,9 +2,7 @@
 queryEventLog(queryTime, eventLog, table)
 output = []
 
-FOR
-each
-bucket
+FOR each bucket
 IN
 table
 FOR
@@ -24,8 +22,7 @@ IN
 eventLog[package.packageID]
 IF
 event.time <= queryTime
-IF
-latest == NULL
+IF latest == NULL
 OR
 event.time > latest.time
 latest = event

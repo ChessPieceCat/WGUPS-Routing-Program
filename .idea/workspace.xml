@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/WGUPS Routing Program.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/distance_table.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/hash_table.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/package_loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distanceFile.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logistics/routing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logistics/truck_management.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/driver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/truck.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packageFile.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulation/event_log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulation/simulate.py" afterDir="false" />
+    <list default="true" id="5069e723-7437-4b31-818f-a8eeeacfa4a3" name="Changes" comment="File skeleton created. Pseudocode imported.&#10; Unfinished code written for main.py. Truck, driver, and status classes created. Hash table started.&#10; Distance table created.&#10; Package loader started.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/hash_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/hash_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logistics/truck_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistics/truck_management.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,14 +27,85 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ChessPieceCat"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ChessPieceCat/WGUPS-Routing-Program.git",
+    "accountId": "6cc0ca02-0926-4656-92b6-658622a9b4d4"
+  }
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2,
-  "fromUser": false
-}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.151774360549479" />
+      <entry key="MS500" value="1.6900562482656187" />
+      <entry key="S2" value="2.4714706247899993" />
+      <entry key="S5" value="3.7454418424230433" />
+      <entry key="S10" value="5.931373697976843" />
+      <entry key="S30" value="26.129453796721826" />
+      <entry key="S60" value="48.380274568916846" />
+      <entry key="M2" value="70.26167748563853" />
+      <entry key="M5" value="101.40573421195992" />
+      <entry key="M10" value="124.5361535821457" />
+      <entry key="M15" value="135.486989256415" />
+      <entry key="M30" value="148.77343378836537" />
+      <entry key="H1" value="156.47556433539873" />
+      <entry key="H2" value="160.6289568568213" />
+      <entry key="H4" value="162.78647770182016" />
+      <entry key="D1" value="164.627121265842" />
+      <entry key="W1" value="164.94663375239884" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="5.978988386287201E-57" />
+      <entry key="MS500" value="5.692794960752587E-12" />
+      <entry key="S2" value="0.0015446546121057087" />
+      <entry key="S5" value="0.07508148157616747" />
+      <entry key="S10" value="0.2742298243215069" />
+      <entry key="S30" value="0.7098742253117862" />
+      <entry key="S60" value="1.0516069817666343" />
+      <entry key="M2" value="1.3933966385502055" />
+      <entry key="M5" value="1.7129871424367054" />
+      <entry key="M10" value="1.8476898801942223" />
+      <entry key="M15" value="1.89638283878492" />
+      <entry key="M30" value="1.947120914812951" />
+      <entry key="H1" value="1.9732866617010765" />
+      <entry key="H2" value="1.9865740949003254" />
+      <entry key="H4" value="1.99326963907789" />
+      <entry key="D1" value="1.9988758468675134" />
+      <entry key="W1" value="1.9998393471645388" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.6285739422118787" />
+      <entry key="MS500" value="1.0603015888392036" />
+      <entry key="S2" value="2.0760467148633355" />
+      <entry key="S5" value="3.5550944686885266" />
+      <entry key="S10" value="6.027281469036025" />
+      <entry key="S30" value="26.754946497207552" />
+      <entry key="S60" value="49.37524858646225" />
+      <entry key="M2" value="71.61335246435752" />
+      <entry key="M5" value="103.09084739853631" />
+      <entry key="M10" value="126.36551827885256" />
+      <entry key="M15" value="137.36977913683538" />
+      <entry key="M30" value="150.71292949035725" />
+      <entry key="H1" value="158.44479974787214" />
+      <entry key="H2" value="162.61344121560333" />
+      <entry key="H4" value="164.77868585266404" />
+      <entry key="D1" value="166.62581783760893" />
+      <entry key="W1" value="166.94644743033842" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3G0iW09Zxkwu62L4HymQ6MF4pIj" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -67,10 +125,16 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "full.screen.before.presentation.mode": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "C:/Users/tiern/OneDrive/Documents/C950 Project/WGUPS Routing Program",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "ml.llm.AIAssistantPromptsLibrary",
     "to.speed.mode.migration.done": "true"
   }
@@ -95,9 +159,22 @@
       <option name="presentableId" value="Default" />
       <updated>1783114917066</updated>
     </task>
+    <task id="LOCAL-00001" summary="File skeleton created. Pseudocode imported.&#10; Unfinished code written for main.py. Truck, driver, and status classes created. Hash table started.&#10; Distance table created.&#10; Package loader started.">
+      <option name="closed" value="true" />
+      <created>1783172835398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1783172835398</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="File skeleton created. Pseudocode imported.&#10; Unfinished code written for main.py. Truck, driver, and status classes created. Hash table started.&#10; Distance table created.&#10; Package loader started." />
+    <option name="LAST_COMMIT_MESSAGE" value="File skeleton created. Pseudocode imported.&#10; Unfinished code written for main.py. Truck, driver, and status classes created. Hash table started.&#10; Distance table created.&#10; Package loader started." />
   </component>
 </project>

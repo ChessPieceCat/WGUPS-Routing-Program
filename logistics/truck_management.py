@@ -96,8 +96,7 @@ FUNCTION loadTruck(truck, queues, currentTime, table)
 	RETURN queues
 END FUNCTION'''
 from ctypes.wintypes import SIZE
-
-from data.hash_table import update
+from data.hash_table import HashTable
 from models.status import Status
 
 
@@ -119,7 +118,7 @@ def priorityQueues(table):
 	return truckLocked, grouped, remaining
 
 def isEligible(package, currentTime):
-	if package.status == Status.AT_HUB & package.availableTime <= currentTime & (package.addressHold == FALSE or currentTime >= package.addressCorrectionTime):
+	if package.status == Status.AT_HUB & package.availableTime <= currentTime & (package.addressHold == False or currentTime >= package.addressCorrectionTime):
 		return True
 	else:
 		return False
@@ -131,7 +130,7 @@ def loadTruck(truck, queues, currentTime, table):
 	for package in queues.truckLocked:
 		if package.assignedTruckID == truck.truckID & currentLoad < truck.capacity & isEligible(package, currentTime):
 			truck.packages.append(package)
-			update(package.packageID, Status.LOADED, None)
+			table.update(package.packageID, Status.LOADED, None)
 			currentLoad += 1
 
 	for package in queues.grouped:
@@ -141,13 +140,13 @@ def loadTruck(truck, queues, currentTime, table):
 			if currentLoad + groupSize <= truck.capacity:
 				for p in groupList:
 					truck.packages.append(p)
-					update(p.packageID, Status.LOADED, None)
+					table.update(p.packageID, Status.LOADED, None)
 					currentLoad += groupSize
 
 	for package in queues.remaining:
 		if currentLoad < truck.capacity & isEligible(package, currentTime):
 			truck.packages.append(package)
-			update(package.packageID, Status.LOADED, None)
+			table.update(package.packageID, Status.LOADED, None)
 			currentLoad += 1
 
 def loadAllTrucks(trucks, drivers, table, distanceTable):
