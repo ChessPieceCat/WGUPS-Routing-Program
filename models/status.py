@@ -1,9 +1,4 @@
-'''STATUS = {
-	AT_HUB,
-	LOADED,
-	ON_ROUTE,
-	DELIVERED
-}'''
+#status enum
 from enum import Enum
 
 

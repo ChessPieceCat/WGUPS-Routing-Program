@@ -1,11 +1,4 @@
-'''CLASS Truck
-	truckID
-	capacity = 16
-	packages = []
-	route = []
-	currentLocation = "HUB"
-	mileage = 0
-END CLASS'''
+#truck class to separate individual trucks with their packages, routes, locations, and mileage. Also contains a boolean to track whether they are on route or not
 class Truck:
 	def __init__(self, truckID):
 		self.truckID = truckID

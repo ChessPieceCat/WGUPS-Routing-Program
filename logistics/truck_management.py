@@ -1,108 +1,12 @@
-'''FUNCTION priorityQueues(table)
-	truckLocked = []
-	grouped = []
-	remaining = []
 
-	FOR each bucket IN table
-			FOR each package IN bucket
-
-				IF package.assignedTruckID != NULL
-					ADD package TO truckLocked
-
-				ELSE IF package.groupPackages != NULL
-					ADD package TO grouped
-
-				ELSE
-					ADD package TO remaining
-				END IF
-			END FOR
-	END FOR
-
-	SORT remaining BY deadline
-
-	RETURN truckLocked, grouped, remaining
-
-END FUNCTION
-
-FUNCTION isEligible(package, currentTime)
-		IF package.status == STATUS.AT_HUB
-		AND package.availableTime <= currentTime
-		AND (package.addressHold == FALSE OR currentTime >= 						           package.addressCorrectionTime)
-			RETURN TRUE
-		ELSE
-			RETURN FALSE
-		END IF
-END FUNCTION
-
-FUNCTION loadTruck(Truck, queues, currentTime, table)
-
-	currentLoad = 0
-	assignedGroups = set()
-
-	FOR each package IN queues.truckLocked
-			IF package.assignedTruckID == Truck.truckID
-			AND currentLoad < Truck.capacity
-			AND isEligible(package, currentTime)
-				ADD package TO Truck.packages
-				table.update(package.packageID, STATUS.LOADED, NULL)
-				currentLoad++
-			END IF
-	END FOR
-
-	FOR each package IN queues.grouped
-
-			IF package.groupPackages NOT IN assignedGroups
-			AND isEligible(package, currentTime)
-				groupList = all packages sharing package.groupPackages
-				groupSize = SIZE(groupList)
-				IF currentLoad + groupSize <= Truck.capacity
-					FOR each p IN groupList
-						ADD p TO Truck.packages
-						table.update(p.packageID, STATUS.LOADED, NULL)
-					END FOR
-					 ADD groupList[0].groupPackages TO assignedGroups
-					currentLoad += groupSize
-				END IF
-		END IF
-	END FOR
-
-	FOR each package in queues.remaining
-			IF currentLoad < Truck.capacity
-			AND isEligible(package, currentTime)
-			ADD package TO Truck.packages
-				table.update(package.packageID, STATUS.LOADED, NULL)
-				currentLoad++
-			END IF
-	END FOR
-
-     END FUNCTION
-
-     FUNCTION loadAllTrucks(trucks, drivers, table, distanceTable)
-	queues = priorityQueues(table)
-	currentTime = 8.0
-	drivers[0].assignedTruck = trucks[0] //maybe move these two to main controller later
-	drivers[1].assignedTruck = trucks[1]
-
-	FOR each Truck IN trucks
-		loadTruck(
-			Truck,
-			queues,
-			currentTime,
-			table
-		)
-
-		buildRoute(Truck, distanceTable)
-	END FOR
-	RETURN queues
-END FUNCTION'''
 from logistics.routing import buildRoute
 from models.status import Status
 from collections import namedtuple
 
 from simulation.event_log import logEvent
-
+#initializes queues as a namedtuple for storing special notes
 Queues = namedtuple('Queues', ['truckLocked', 'grouped', 'remaining'])
-
+#sorts packages to be loaded onto trucks. Those with assigned trucks are loaded first followed by grouped packages. Remaining packages are appended after the others are exhausted
 def priorityQueues(table):
 	truckLocked = []
 	grouped = []
@@ -116,10 +20,10 @@ def priorityQueues(table):
 				grouped.append(package)
 			else:
 				remaining.append(package)
-
+	#sorts remaining packages by deadline to avoid late deliveries
 	remaining.sort(key=lambda package: package["deadline"])
 	return Queues(truckLocked, grouped, remaining)
-
+#checks if packages are eligible according to their delay status and current time
 def isEligible(package, currentTime):
 	if (package["status"] == Status.AT_HUB
 			and package["availableTime"] <= currentTime
@@ -127,7 +31,7 @@ def isEligible(package, currentTime):
 		return True
 	else:
 		return False
-
+#finds members of a group of packages according to their group ID
 def findGroupMembers(groupID, table):
 	members = []
 	for bucket in table.table:
@@ -135,18 +39,18 @@ def findGroupMembers(groupID, table):
 			if package["groupPackages"] == groupID:
 				members.append(package)
 	return members
-
+#loads individual trucks using sorted package data. Each section contains checks to ensure packages are eligible for loading and won't exceed the capacity
 def loadTruck(truck, queues, currentTime, table, eventLog):
 	currentLoad = 0
 	assignedGroups = set()
-
+	#first loads packages that are assigned to the called truck, updates the table and event log, and increments the current load
 	for package in queues.truckLocked:
 		if package["assignedTruckID"] == truck.truckID and currentLoad < truck.capacity and isEligible(package, currentTime):
 			truck.packages.append(package)
 			table.update(package["packageID"], Status.LOADED, None)
 			logEvent(eventLog, package["packageID"], Status.LOADED, currentTime, truck.truckID)
 			currentLoad += 1
-
+	#next, loads packages that are grouped together so long as this will not exceed the capacity. Updates each package in the group in the table and event log before adding the load
 	for package in queues.grouped:
 		if package["groupPackages"] not in assignedGroups and isEligible(package, currentTime):
 			groupList = findGroupMembers(package["groupPackages"], table)
@@ -157,13 +61,13 @@ def loadTruck(truck, queues, currentTime, table, eventLog):
 					table.update(p["packageID"], Status.LOADED, None)
 				assignedGroups.add(package["groupPackages"])
 				currentLoad += groupSize
-
+	#finally, loads and updates remaining packages and increments the load for each
 	for package in queues.remaining:
 		if currentLoad < truck.capacity and isEligible(package, currentTime):
 			truck.packages.append(package)
 			table.update(package["packageID"], Status.LOADED, None)
 			currentLoad += 1
-
+#initial loading of all three trucks and assigning of drivers. This first calls priorityQueues to sort the packages
 def loadAllTrucks(trucks, drivers, table, distanceTable, eventLog):
 	queues = priorityQueues(table)
 	currentTime = 8.0
@@ -174,6 +78,3 @@ def loadAllTrucks(trucks, drivers, table, distanceTable, eventLog):
 		loadTruck(truck, queues, currentTime, table, eventLog)
 		buildRoute(truck, distanceTable)
 	return queues
-
-def getTotalMileage(trucks):
-	return sum(truck.mileage for truck in trucks)

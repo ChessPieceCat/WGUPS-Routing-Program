@@ -1,25 +1,7 @@
-'''FUNCTION loadDistanceTable(fileName)
-	CREATE distanceTable = {}
-	OPEN fileName
-	READ header
-	locations = header[1:]
 
-	FOR each row IN fileName
-			locationName = row[0]
-			distanceTable[locationName] = {}
-
-			FOR i from 0 to length(locations) - 1
-				otherLocation = locations[i]
-				distance = row[i + 1]
-				distanceTable[locationName][otherLocation] = distance
-			END FOR
-	END FOR
-	CLOSE fileName
-	RETURN distanceTable
-END FUNCTION'''
 import csv
 
-
+#loads the distance table and stores it for use in routing calculations
 def loadDistanceTable(fileName):
 	distanceTable = {}
 	with open(fileName, newline='') as csvfile:

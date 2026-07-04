@@ -1,8 +1,4 @@
-'''CLASS Driver
-	driverID
-	assignedTruck = NULL
-	availableTime = 8.0
-END CLASS'''
+#driver class
 class Driver:
 	def __init__(self, driverID):
 		self.driverID = driverID
