@@ -12,3 +12,4 @@ class Status(Enum):
     LOADED = 'LOADED'
     ON_ROUTE = 'ON_ROUTE'
     DELIVERED = 'DELIVERED'
+    DELAYED = 'DELAYED'

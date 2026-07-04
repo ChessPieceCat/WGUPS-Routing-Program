@@ -1,4 +1,4 @@
-'''CLASS truck
+'''CLASS Truck
 	truckID
 	capacity = 16
 	packages = []
@@ -6,7 +6,7 @@
 	currentLocation = "HUB"
 	mileage = 0
 END CLASS'''
-class truck:
+class Truck:
 	def __init__(self, truckID):
 		self.truckID = truckID
 		self.capacity = 16

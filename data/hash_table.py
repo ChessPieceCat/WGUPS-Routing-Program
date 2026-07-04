@@ -60,6 +60,7 @@ class HashTable:
 
 	def insert(self, packageID, address, deadline, city, zipCode, weight, availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold):
 		index = self.hash(packageID)
+		initialStatus = Status.DELAYED if availableTime > 8.0 else Status.AT_HUB
 
 		record = {
 			"packageID": packageID,
@@ -74,7 +75,7 @@ class HashTable:
 			"addressCorrectionTime": addressCorrectionTime,
 			"correctAddress": correctAddress,
 			"addressHold": addressHold,
-			"status": Status.AT_HUB,
+			"status": initialStatus,
 			"deliveryTime": None
 		}
 		self.table[index].append(record)

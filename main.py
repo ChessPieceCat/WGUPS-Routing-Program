@@ -1,8 +1,8 @@
 '''FUNCTION main()
 	table = new HashTable()
 	distanceTable = loadDistanceTable("DISTANCEFILE.csv")
-	trucks = [truck(truckID = 0), truck(truckID = 1), truck(truckID = 2)]
-	drivers = [driver(driverID = 0), driver(driverID = 1)]
+	trucks = [Truck(truckID = 0), Truck(truckID = 1), Truck(truckID = 2)]
+	drivers = [Driver(driverID = 0), Driver(driverID = 1)]
 	loadPackages("PACKAGEFILE.csv", table)
 	eventLog = simulateDelivery(trucks, drivers, table, distanceTable)
 
@@ -31,14 +31,37 @@ END FUNCTION'''
 from data.distance_table import loadDistanceTable
 from data.hash_table import HashTable
 from data.package_loader import loadPackages
-from models.driver import driver
-from models.truck import truck
+from models.driver import Driver
+from models.truck import Truck
+from simulation.event_log import queryEventLog
+from simulation.simulate import simulateDelivery
 
 
 def main():
-    table = new HashTable()
+    table = HashTable()
     distanceTable = loadDistanceTable("distanceFile.csv")
-    trucks = [truck(0), truck(1), truck(2)]
-    drivers = [driver(0), driver(1)]
+    trucks = [Truck(0), Truck(1), Truck(2)]
+    drivers = [Driver(0), Driver(1)]
     loadPackages("packageFile.csv", table)
     eventLog = simulateDelivery(trucks, drivers, table, distanceTable)
+
+    while True:
+        print("Enter time (HH:MM in 24-hour format) or EXIT")
+        userInput = input()
+
+        if input == "EXIT":
+            break
+
+        queryTime = parseTime(userInput)
+        result = queryEventLog(queryTime, eventLog, table)
+
+        print(result)
+
+def parseTime(timeString):
+    hour, minute = timeString.split(":")
+    hour = int(hour)
+    minute = int(minute)
+    return hour + (minute / 60)
+
+if __name__ == "__main__":
+    main()

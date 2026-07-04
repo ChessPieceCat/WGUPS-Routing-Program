@@ -90,12 +90,12 @@ def queryEventLog(queryTime, eventLog, table):
             latest = None
 
             if package["packageID"] in eventLog:
-                for event in eventLog[package.packageID]:
+                for event in eventLog[package["packageID"]]:
                     if event["time"] <= queryTime:
                         if latest is None or event["time"] > latest["time"]:
                             latest = event
             if latest is None:
-                status = Status.AT_HUB
+                status = package["status"]
             else:
                 status = latest["status"]
 

@@ -7,7 +7,7 @@ getDistance(locationOne, locationTwo, distanceTable)
     END IF
 END FUNCTION
 
-FUNCTION nearestNeighbor(truck, distanceTable)
+FUNCTION nearestNeighbor(Truck, distanceTable)
     location = "HUB"
 
     WHILE unvisited packages > 0
@@ -70,10 +70,10 @@ FUNCTION twoOpt(route, distanceTable)
     RETURN bestRoute
 END FUNCTION
 
-FUNCTION buildRoute(truck, distanceTable)
-    route = nearestNeighbor(truck, distanceTable)
+FUNCTION buildRoute(Truck, distanceTable)
+    route = nearestNeighbor(Truck, distanceTable)
     route = twoOpt(route, distanceTable)
-    truck.route = route
+    Truck.route = route
 END FUNCTION'''
 from copy import copy
 
@@ -86,22 +86,22 @@ def getDistance(locationOne, locationTwo, distanceTable):
 def nearestNeighbor(truck, distanceTable):
     location = "HUB"
     route = []
-    unvisited = set(truck.packages)
+    unvisited = list(truck.packages)
 
     while len(unvisited) > 0:
         nearestPackage = None
         shortestDistance = float('inf')
 
         for package in unvisited:
-            distance = getDistance(location, package.address, distanceTable)
+            distance = getDistance(location, package["address"], distanceTable)
             if distance < shortestDistance:
                 shortestDistance = distance
                 nearestPackage = package
 
         if nearestPackage is not None:
-            route.append(nearestPackage)
+            route.append(nearestPackage["address"])
             unvisited.remove(nearestPackage)
-            location = nearestPackage.address
+            location = nearestPackage["address"]
         else:
             break
 
@@ -109,23 +109,23 @@ def nearestNeighbor(truck, distanceTable):
     return route
 
 def calculateTotalDistance(route, distanceTable):
-    total = getDistance("Hub", route[0], distanceTable)
-    for i in range(len(route) - 2):
+    total = getDistance("HUB", route[0], distanceTable)
+    for i in range(len(route) - 1):
         total += getDistance(route[i], route[i + 1], distanceTable)
     return total
 
 def twoOpt(route, distanceTable):
     bestRoute = route
-    bestDistance = getDistance("Hub", bestRoute[0], distanceTable)
+    bestDistance = calculateTotalDistance(bestRoute, distanceTable)
 
-    for i in range(1, len(route) - 3):
-        for j in range(i + 2, len(route) - 2):
+    for i in range(1, len(route) - 2):
+        for j in range(i + 2, len(route) - 1):
             oldCost = getDistance(bestRoute[i - 1], bestRoute[i], distanceTable) + getDistance(bestRoute[j], bestRoute[j + 1], distanceTable)
             newCost = getDistance(bestRoute[i - 1], bestRoute[j], distanceTable) + getDistance(bestRoute[i], bestRoute[j + 1], distanceTable)
 
             if newCost < oldCost:
                 newRoute = copy(bestRoute)
-                newRoute[i:j] = newRoute[i:j][::-1]
+                newRoute[i:j + 1] = newRoute[i:j + 1][::-1]
                 newDistance = bestDistance - oldCost + newCost
 
                 if newDistance < bestDistance:

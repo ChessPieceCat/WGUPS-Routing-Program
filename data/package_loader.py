@@ -35,7 +35,7 @@ FUNCTION
 
 	END IF
 
-	IF specialNotes contains “Can only be on truck”
+	IF specialNotes contains “Can only be on Truck”
 	assignedTruckID = extract number from string
 
 	END IF
@@ -54,24 +54,27 @@ FUNCTION
 	RETURN availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold
 
 END FUNCTION'''
+import csv
 import re
 
 def loadPackages(fileName, table):
-	openFile = open(fileName)
+	with open(fileName, newline='') as openFile:
+		reader = csv.reader(openFile)
+		next(reader)
 
-	for line in openFile:
-		packageID = line[0]
-		address = line[1]
-		deadline = line[2]
-		city = line[3]
-		zipCode = line[4]
-		weight = line[5]
-		specialNotes = line[6]
+		for row in openFile:
+			packageID = int(row[0])
+			address = row[1]
+			deadline = row[2]
+			city = row[3]
+			zipCode = row[4]
+			weight = row[5]
+			specialNotes = row[6] if len(row) > 6 else None
 
-		availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold = parseNotes(specialNotes)
-		table.insert(packageID, address, deadline, city, zipCode, weight, availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold)
+			availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold = parseNotes(packageID, specialNotes)
+			table.insert(packageID, address, deadline, city, zipCode, weight, availableTime, assignedTruckID, groupPackages, addressCorrectionTime, correctAddress, addressHold)
 
-def parseNotes(specialNotes):
+def parseNotes(packageID, specialNotes):
 	availableTime = 8.0
 	assignedTruckID = None
 	groupPackages = None
@@ -88,22 +91,24 @@ def parseNotes(specialNotes):
 			hour = int(m.group(1))
 			minute = int(m.group(2))
 			ampm = m.group(3)
-			ampm = ampm.lower()
-			if ampm == "pm" and hour != 12:
-				hour += 12
-			if ampm == 'am' and hour == 12:
-				hour = 0
+			if ampm:
+				ampm = ampm.lower()
+				if ampm == "pm" and hour != 12:
+					hour += 12
+				if ampm == 'am' and hour == 12:
+					hour = 0
 			availableTime = hour + (minute / 60.0)
 
-	if "Can only be on truck" in specialNotes:
-		m2 = re.search(r"Can only be on truck\s*(\d+)", specialNotes)
+	if "Can only be on Truck" in specialNotes:
+		m2 = re.search(r"Can only be on Truck\s*(\d+)", specialNotes)
 		if m2:
 			assignedTruckID = int(m2.group(1))
 
 	if "Must be delivered with" in specialNotes:
 		ids = re.findall(r"\d+", specialNotes)
 		if ids:
-			groupPackages = [int(i) for i in ids]
+			allIDs = [packageID] + [int(i) for i in ids]
+			groupPackages = min(allIDs)
 
 	if "Wrong address" in specialNotes:
 		addressHold = True
