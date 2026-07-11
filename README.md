@@ -1,49 +1,140 @@
-This project was created for Data Structures and Algorithms II at Western Governors University. The scenario details are listed below:
+# WGUPS Routing Optimization
 
-This task is the implementation phase of the WGUPS Routing Program. The Western Governors University Parcel Service (WGUPS) needs to determine an efficient route and delivery distribution for their daily local deliveries (DLD) because packages are not currently being consistently delivered by their promised deadline. The Salt Lake City DLD route has three trucks, two drivers, and an average of 40 packages to deliver each day. Each package has specific criteria and delivery requirements that are listed in the attached “WGUPS Package File.” Your task is to determine an algorithm, write code, and present a solution where all 40 packages will be delivered on time while meeting each package’s requirements and keeping the combined total distance traveled under 140 miles for all trucks. The specific delivery locations are shown on the attached “Salt Lake City Downtown Map,” and distances to each location are given in the attached “WGUPS Distance Table.” The intent is to use the program for this specific location and also for many other cities in each state where WGU has a presence. As such, you will need to include detailed comments to make your code easy to follow and to justify the decisions you made while writing your scripts. The supervisor should be able to see, at assigned points, the progress of each truck and its packages by any of the variables listed in the “WGUPS Package File,” including what has been delivered and at what time the delivery occurred.
+A route optimization and delivery simulation written in Python that models package deliveries for the fictional Western Governors University Parcel Service (WGUPS). The project implements routing heuristics and custom data structures to deliver all packages within their required deadlines while minimizing total travel distance.
 
-•  Each truck can carry a maximum of 16 packages, and the ID number of each package is unique.
-•  The trucks travel at an average speed of 18 miles per hour and have an infinite amount of gas with no need to stop.
-•  There are no collisions.
-•  Three trucks and two drivers are available for deliveries. Each driver stays with the same truck as long as that truck is in service.
-•  Drivers leave the hub no earlier than 8:00 a.m., with the truck loaded, and can return to the hub for packages if needed.
-•  The delivery and loading times are instantaneous (i.e., no time passes while at a delivery or when moving packages to a truck at the hub). This time is factored into the calculation of the average speed of the trucks.
-•  There is up to one special note associated with a package.
-•  The delivery address for package #9, Third District Juvenile Court, is wrong and will be corrected at 10:20 a.m. WGUPS is aware that the address is incorrect and will be updated at 10:20 a.m. However, WGUPS does not know the correct address (410 S. State St., Salt Lake City, UT 84111) until 10:20 a.m.
-•  The distances provided in the “WGUPS Distance Table” are equal regardless of the direction traveled.
-•  The day ends when all 40 packages have been delivered.
+This project was completed as part of the **Data Structures and Algorithms II** course at **Western Governors University**.
 
-Strengths of the Chosen Algorithm
-At only 127.3 miles total, this algorithm is well under the project's mileage limit. The final delivery at 1:04 pm also shows that the algorithm is efficient not only in mileage but also in time.
+---
 
-Verification of Algorithm
-This algorithm delivers all packages before their deadlines pass, finishes with 127.3 miles, keeps all packages that must be delivered together on the same route, and waits to deliver delayed packages until they arrive at the hub or have their addresses corrected.
+## Overview
 
-Other Possible Algorithms
-Two algorithms that could have been used instead are 3-opt and Lin-Kernighan.
+The objective was to design and implement a routing system capable of delivering 40 packages while satisfying a variety of real-world delivery constraints, including package deadlines, delayed arrivals, incorrect addresses, truck capacity limits, and package grouping requirements.
 
-Algorithm Differences
-The algorithms mentioned are extensions of the 2-opt heuristic used in this program. While 2-opt removes edge crossings and replaces two edges at a time, 3-opt removes three edges at a time. This increases efficiency, but it would be a marginal improvement for the data size and increase processing speed.
-Lin-Kernighan is a further, dynamic expansion of these algorithms. This algorithm continues to remove edges as long as there is an improvement. This means it could result in something like 2 or 3-opt, or it could go much farther than that. This would likely result in lower mileage, but the algorithm's complexity is still unreasonable for such a small data set.
+The solution combines routing heuristics with a custom package management system to produce an efficient delivery schedule while remaining well under the project's maximum mileage requirement.
 
-Different Approach
-If I were to redo this project, I would focus most on proper planning. I planned a detailed program in pseudocode, but I had to adjust the structure as I moved away from a sequential design toward a concurrent one. This issue arose because I failed to plan the simulation properly. I should also have clearly defined each data structure beforehand, as this caused issues later when I needed to change them. The two-opt section caused many issues as I learned how it worked, but ultimately, the trial and error was very useful in deepening my understanding of the algorithm. Another major issue with my work structure was failing to test each file as it was written properly. This resulted in hours of debugging that may have been faster if I had tested each file as I finished it.
+### Final Results
 
-Verification of Data Structure
-The data structure used to hold package data is an array of lists and does not require any additional libraries or classes. It has an insert function that adds all relevant components, as well as update and search functions.
+* **Total distance traveled:** **127.3 miles**
+* **Project mileage limit:** **140 miles**
+* **Final delivery completed:** **1:04 PM**
+* **All package deadlines met**
 
-Other Data Structures
-One alternative data structure is a balanced binary search tree. Another option is a heap.
+---
 
-Data Structure Differences
-Unlike a hash table, a balanced BST would keep packages sorted by the specified component (ID, deadline, weight, etc.). This would allow for easier loading later in the program, since much of the sorting would already be done. However, searching this structure would be slower, O(log n), than searching the hash table, O(1) (average).
-A heap would provide faster access to packages based on priority. The insertion and update functions would be on the order of the BST, but accessing the highest/lowest-priority package would be O(1). This would make delivery scheduling easier, but cause issues when searching for other packages that are not at the top or bottom of the heap.
+## Features
 
-I. Sources
-The Python Language Reference. (2026). Python Documentation. https://docs.python.org/3.13/reference/index.html (Syntax and behavior)
+* Custom package management data structure
+* Delivery simulation with multiple trucks and drivers
+* Route optimization using the **Nearest Neighbor** heuristic with **2-opt** optimization
+* Time-based package events (delayed arrivals and address corrections)
+* Package status lookup at any point during the delivery day
+* Complete simulation of truck locations and package deliveries
 
-‌Stephens, R. (2024). HowTo: Understand the 2-opt algorithm for solving the traveling salesman problem. Rodstephensbooks.com. https://rodstephensbooks.com/tsp_2opt.html (To understand 2-opt)
-‌
-nandan7198. (2023). GitHub - nandan7198/TSP-Solver: Traveling Salesman Problem Solver using Nearest Neighbor and 2-OPT Algorithm. GitHub. https://github.com/nandan7198/TSP-Solver/tree/main (Reference to further understand 2-opt, coded in Java
-‌
-Olds, E., Lysecky, R., Vahid, F., & Lysecky, S. (2025). C 950: Data structures and algorithms II (zyBook, ISBN 979-8-203-08225-1). zyBooks (zyante Inc.). https://learn.zybooks.com/zybook/WGUC950v5 (Used frequently for coding references and learning concepts)
+---
+
+## Project Requirements
+
+The simulation models a realistic delivery environment with the following constraints:
+
+* Three delivery trucks with a maximum capacity of 16 packages each
+* Two drivers available throughout the day
+* Trucks travel at an average speed of 18 mph
+* Deliveries begin no earlier than **8:00 AM**
+* Certain packages must remain together on the same truck
+* Delayed packages cannot be loaded until they arrive at the hub
+* Package #9 receives a corrected delivery address at **10:20 AM**
+* All 40 packages must be delivered before their deadlines
+* Total travel distance must remain under **140 miles**
+
+---
+
+## Algorithm
+
+### Chosen Approach
+
+The routing algorithm combines a **Nearest Neighbor** heuristic with **2-opt** optimization.
+
+Nearest Neighbor provides an efficient initial route by repeatedly selecting the closest unvisited destination. The resulting route is then improved using the 2-opt heuristic, which removes inefficient edge crossings and shortens the overall travel distance.
+
+For a problem of this size, the combination offers an excellent balance between solution quality and computational complexity.
+
+### Performance
+
+The completed solution:
+
+* Delivered every package before its deadline
+* Traveled only **127.3 miles**
+* Correctly handled delayed packages and address corrections
+* Maintained required package groupings
+
+---
+
+## Alternative Algorithms Considered
+
+### 3-opt
+
+3-opt extends the 2-opt heuristic by replacing three edges at a time instead of two. While this can produce shorter routes, the improvement would likely be marginal for a dataset containing only 40 packages.
+
+### Lin-Kernighan
+
+The Lin-Kernighan heuristic dynamically determines how many edges to replace during optimization, often producing solutions closer to the optimal Traveling Salesman route.
+
+Although it generally outperforms 2-opt, its additional complexity is unnecessary for a problem of this scale.
+
+---
+
+## Data Structures
+
+Package information is stored in a custom hash table implementation that supports efficient insertion, updating, and lookup operations without relying on external libraries.
+
+### Complexity
+
+| Operation | Average Complexity |
+| --------- | -----------------: |
+| Insert    |               O(1) |
+| Search    |               O(1) |
+| Update    |               O(1) |
+
+### Alternative Data Structures
+
+**Balanced Binary Search Tree**
+
+A balanced BST would maintain sorted package data, simplifying some scheduling tasks, but average search performance would decrease to **O(log n)**.
+
+**Heap**
+
+A heap would provide efficient access to the highest-priority package, making priority scheduling easier. However, searching for arbitrary packages would become significantly less efficient than using a hash table.
+
+---
+
+## Lessons Learned
+
+This project provided valuable experience designing algorithms and building larger software systems.
+
+Some of the most significant lessons included:
+
+* The importance of planning data structures before implementation.
+* Designing simulations requires thinking about concurrent events rather than strictly sequential execution.
+* Incremental testing dramatically reduces debugging time.
+* Understanding the underlying mechanics of routing heuristics is more valuable than simply implementing an existing algorithm.
+
+If revisiting the project, I would spend considerably more time designing the architecture and data structures before writing code, as this would reduce later refactoring and simplify testing.
+
+---
+
+## Technologies
+
+* Python
+* Custom hash table implementation
+* Nearest Neighbor heuristic
+* 2-opt route optimization
+* Object-oriented programming
+
+---
+
+## References
+
+* Python Software Foundation. *Python Language Reference.* https://docs.python.org/3.13/reference/index.html
+* Stephens, R. (2024). *Understanding the 2-opt Algorithm for the Traveling Salesman Problem.* https://rodstephensbooks.com/tsp_2opt.html
+* nandan7198. *Traveling Salesman Problem Solver using Nearest Neighbor and 2-opt.* https://github.com/nandan7198/TSP-Solver
+* Olds, E., Lysecky, R., Vahid, F., & Lysecky, S. (2025). *Data Structures and Algorithms II (C950).* zyBooks.
